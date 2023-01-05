@@ -38,6 +38,23 @@ public class TokenizeDataSet {
             j++;
             System.out.println("===========================");
         }
+        System.out.println(tokenizedSentences[0]);
+    }
+
+    public String token(String sentence){
+        String result = "";
+        Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        KomoranResult analyzeResultList = komoran.analyze(sentence);
+        System.out.println("plaintext: " + analyzeResultList.getPlainText());
+        System.out.println("chosen texts: "+analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV"));
+
+        List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
+        for (String token: tokenList){
+            result = result + token + " ";
+        }
+
+        System.out.println("result: "+ result);
+        return result;
     }
 
     public ArrayList<String> readTxtFile(String path) {
