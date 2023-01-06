@@ -58,9 +58,12 @@ public class JFastTexts {
         String text = "피자 주문해줘!";
         TokenizeDataSet tokenizeDataSet = new TokenizeDataSet();
         String tokenized = tokenizeDataSet.token(text);
-        JFastText.ProbLabel probLabel = jft.predictProba(tokenized);
+        JFastText.ProbLabel probLabel = jft.predictProba("피자 주문해줘!");
         System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
                 text, probLabel.label, Math.exp(probLabel.logProb));
+
+        //상위 n개의 확률 가져오기(마이너스에 결과라도 확률이 나오면 반환해줌!
+        System.out.println("predictProba: " + jft.predictProba(text, 5));
     }
 
     //사용자 사전 만들기

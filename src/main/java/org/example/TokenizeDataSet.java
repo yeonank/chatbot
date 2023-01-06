@@ -7,6 +7,7 @@ import kr.co.shineware.nlp.komoran.model.Token;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 public class TokenizeDataSet {
     public String path;
     public int sentence_num =0;
