@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>챗봇 테스트</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+</head>
+<body>
+<div class="col-md-12">
+    <form>
+        <div class="form-group">
+            <label for="typing">입력 메시지</label>
+            <input type="text" class="form-control col-sm-3" id="typing" placeholder="메시지 입력">
+            <button type="button" class="btn btn-primary" id="btn-send">전송</button>
+        </div>
+
+        <div class="container">
+            <h2>응답 결과</h2>
+            <textarea class="form-control col-sm-5" cols="30" rows="10" readonly id="replies"></textarea>
+        </div>
+    </form>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!--script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script-->
+    <script src="/js/app/index.js"></script>
+</div>
+</body>
+</html>
