@@ -20,8 +20,6 @@ public class JpaTestController {
     @GetMapping("/jpa/questions")
     public String insertQuestions(){
         jpaTestService.saveAllQuestions();
-        return " ";
+        return "hello this is question";
     }
-
-
 }

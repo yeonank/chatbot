@@ -12,7 +12,6 @@ import java.util.List;
 public class TokenizeDataSet {
     public ArrayList<String> tokenize(ArrayList<String> sentences) {
         ArrayList<String> tokenizedSentences = new ArrayList<>();
-        int j= 0;
         String result = "";
 
         Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
@@ -20,7 +19,7 @@ public class TokenizeDataSet {
 
         for (String sentence: sentences){
             analyzeResultList = komoran.analyze(sentence);
-            System.out.println(j+"번째 문장 plaintext: " + analyzeResultList.getPlainText());
+            //System.out.println(j+"번째 문장 plaintext: " + analyzeResultList.getPlainText());
             List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
             for (String token: tokenList){
                 result = result + token + " ";
@@ -32,6 +31,18 @@ public class TokenizeDataSet {
         }
 
         return tokenizedSentences;
+    }
+
+    public String tokenizeQuestion(String question){
+        String result = "";
+        Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        KomoranResult analyzeResultList = komoran.analyze(question);
+        List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
+        for (String token: tokenList){
+            result = result + token + " ";
+        }
+        System.out.println("NNG NNP NNB VV: " + tokenList);
+        return result;
     }
 
     public ArrayList<String> readTxtFile(String path) {

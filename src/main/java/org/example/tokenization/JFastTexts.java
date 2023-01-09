@@ -38,4 +38,18 @@ public class JFastTexts {
         //상위 n개의 확률 가져오기(마이너스에 결과라도 확률이 나오면 반환해줌!
         System.out.println("predictProba: " + jft.predictProba(question, 5));
     }
+
+    public String getIntent(String question){
+        JFastText jft = new JFastText();
+        jft.loadModel("src/test/resources/models/supervisedP.model.bin");
+
+        // Do label prediction
+        JFastText.ProbLabel probLabel = jft.predictProba(question);
+        System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
+                question, probLabel.label, Math.exp(probLabel.logProb));
+        //todo question 분석 결과가 없을 때도
+        //상위 n개의 확률 가져오기(마이너스에 결과라도 확률이 나오면 반환해줌!
+        System.out.println("predictProba: " + jft.predictProba(question, 5));
+        return probLabel.label;
+    }
 }

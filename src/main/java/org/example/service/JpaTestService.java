@@ -31,7 +31,7 @@ public class JpaTestService {
         jFastTexts.jfasttextPizza(tokenizedSentences.get(0));
 
         //데이터 저장
-        for (String sentence: sentences) {
+        /*for (String sentence: sentences) {
             questions = Questions.builder()
                                 .intent("")
                                 .questions(sentence)
@@ -40,6 +40,6 @@ public class JpaTestService {
         }
 
         questionsRepository.saveAll(questionsList);
-        System.out.println("save finished");
+        System.out.println("save finished");*/
     }
 }

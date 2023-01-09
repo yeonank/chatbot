@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnswersRepository extends JpaRepository<Answers, Long> {
-
+    Answers findByIntent(String intent);
 }
