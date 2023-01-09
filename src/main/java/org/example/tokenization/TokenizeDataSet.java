@@ -15,6 +15,7 @@ public class TokenizeDataSet {
         String result = "";
 
         Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        komoran.setUserDic("C:/Project/komoran2/Test2/src/dic.user");
         KomoranResult analyzeResultList;
 
         for (String sentence: sentences){
@@ -36,7 +37,9 @@ public class TokenizeDataSet {
     public String tokenizeQuestion(String question){
         String result = "";
         Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        komoran.setUserDic("user_data/dic.user");
         KomoranResult analyzeResultList = komoran.analyze(question);
+        System.out.println("plaintext: " + analyzeResultList.getPlainText());
         List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
         for (String token: tokenList){
             result = result + token + " ";

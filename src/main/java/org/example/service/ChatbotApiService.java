@@ -21,6 +21,12 @@ public class ChatbotApiService {
         System.out.println("typed: " + question);
         String tokenizedSentence = tokenizeDataSet.tokenizeQuestion(question);
         String intent = jFastTexts.getIntent(tokenizedSentence);
+        System.out.println("intent: " + intent);
+        if (intent == null){
+            return "응답 결과가 없습니다. 다시 입력해주세요.";
+        } else if(intent.equals("__label__가격")){
+            return "메뉴 이름을 알려주세요";
+        }
         return answersRepository.findByIntent(intent).getAnswer();
         //todo 가격인 경우 메뉴 테이블에서 추가적으로 찾기
     }

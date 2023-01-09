@@ -30,6 +30,8 @@ var main = {
           }).done(function(res) {
               //alert('메시지: ' + reply);
               $('#replies').append(reply + "\n");
+              const top = $('#replies').prop('scrollHeight');
+              $('#replies').scrollTop(top);
               //window.location.href = '/';
           }).fail(function (error) {
               alert(JSON.stringify(error));

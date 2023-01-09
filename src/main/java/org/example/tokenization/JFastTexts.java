@@ -45,9 +45,13 @@ public class JFastTexts {
 
         // Do label prediction
         JFastText.ProbLabel probLabel = jft.predictProba(question);
-        System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
-                question, probLabel.label, Math.exp(probLabel.logProb));
-        //todo question 분석 결과가 없을 때도
+        try{
+            System.out.printf("\nThe label of '%s' is '%s' with probability %f\n"
+                , question, probLabel.label, Math.exp(probLabel.logProb));
+        }catch(NullPointerException e){
+            System.out.println("catch");
+            return null;
+        }
         //상위 n개의 확률 가져오기(마이너스에 결과라도 확률이 나오면 반환해줌!
         System.out.println("predictProba: " + jft.predictProba(question, 5));
         return probLabel.label;
