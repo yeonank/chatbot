@@ -14,4 +14,9 @@ public class DataSetInsertController {
         dataSetInsertService.saveAllQuestions();
         return "hello this is question";
     }
+
+    @GetMapping("/setting/supervised")
+    public void supervisedData(){
+        dataSetInsertService.doSupervise();
+    }
 }

@@ -19,6 +19,10 @@ public class DataSetInsertService {
     public final JFastTexts jFastTexts;
     public Questions questions;//todo questions 빈 주입 문제(이건 빈 주입을 하면 안되나)
 
+    public void doSupervise(){
+        jFastTexts.supervised();
+    }
+
     @Transactional
     public void saveAllQuestions() {
         String path = "C:/Project/komoran2/Test2/src/labeled_pizzabot_data.txt";

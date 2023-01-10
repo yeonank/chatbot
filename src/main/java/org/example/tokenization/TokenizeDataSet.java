@@ -10,30 +10,6 @@ import java.util.List;
 
 @Component
 public class TokenizeDataSet {
-    public ArrayList<String> tokenize(ArrayList<String> sentences) {
-        ArrayList<String> tokenizedSentences = new ArrayList<>();
-        String result = "";
-
-        Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
-        komoran.setUserDic("user_data/dic.user");
-        KomoranResult analyzeResultList;
-
-        for (String sentence: sentences){
-            analyzeResultList = komoran.analyze(sentence);
-            //System.out.println(j+"번째 문장 plaintext: " + analyzeResultList.getPlainText());
-            List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
-            for (String token: tokenList){
-                result = result + token + " ";
-            }
-            tokenizedSentences.add(result);
-            result = "";
-            System.out.println("NNG NNP NNB VV: " + tokenList);
-            System.out.println("===========================");
-        }
-
-        return tokenizedSentences;
-    }
-
     public String tokenizeQuestion(String question){
         String result = "";
         Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
@@ -76,4 +52,28 @@ public class TokenizeDataSet {
         System.out.println("input arr: " +sentences);
         return sentences;
     }
+
+    /*public ArrayList<String> tokenize(ArrayList<String> sentences) {
+        ArrayList<String> tokenizedSentences = new ArrayList<>();
+        String result = "";
+
+        Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        komoran.setUserDic("user_data/dic.user");
+        KomoranResult analyzeResultList;
+
+        for (String sentence: sentences){
+            analyzeResultList = komoran.analyze(sentence);
+            //System.out.println(j+"번째 문장 plaintext: " + analyzeResultList.getPlainText());
+            List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
+            for (String token: tokenList){
+                result = result + token + " ";
+            }
+            tokenizedSentences.add(result);
+            result = "";
+            System.out.println("NNG NNP NNB VV: " + tokenList);
+            System.out.println("===========================");
+        }
+
+        return tokenizedSentences;
+    }*/
 }

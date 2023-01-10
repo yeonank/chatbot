@@ -28,6 +28,5 @@ public class ChatbotApiService {
             return "메뉴 이름을 알려주세요";
         }
         return answersRepository.findByIntent(intent).getAnswer();
-        //todo 가격인 경우 메뉴 테이블에서 추가적으로 찾기
     }
 }
