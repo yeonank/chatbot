@@ -13,7 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class JpaTestService {
+public class DataSetInsertService {
     public final QuestionsRepository questionsRepository;
     public final TokenizeDataSet tokenizeDataSet;
     public final JFastTexts jFastTexts;
