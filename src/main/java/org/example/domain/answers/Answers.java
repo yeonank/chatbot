@@ -6,16 +6,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
 @NoArgsConstructor
+@Entity
 public class Answers {//id intent questions(데이터 원본 저장)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)//외래키 설정...?
+    @Column(length = 30, nullable = false)//외래키 설정...?
     private String intent;
-    @Column(nullable = false)
+    @Column(length = 100, nullable = false)
     private String answer;
 
     @Builder

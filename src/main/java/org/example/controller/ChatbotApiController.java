@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController//@ResponseBody를 붙이면 json type으로 response를 보냄
 public class ChatbotApiController {
     public final ChatbotApiService chatbotApiService;
+
     @PostMapping("/api/chatbot/answer")
     public ChatbotApiResponseDto getAnswer(@RequestBody ChatbotApiRequestDto question){
         String answer = chatbotApiService.getAnswers(question.getTypedMessage());

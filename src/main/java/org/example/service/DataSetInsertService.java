@@ -21,17 +21,18 @@ public class DataSetInsertService {
 
     @Transactional
     public void saveAllQuestions() {
-        String path = "C:/Project/komoran2/Test2/src/unlabeled_pizzabot_data.txt";
+        String path = "C:/Project/komoran2/Test2/src/labeled_pizzabot_data.txt";
         ArrayList<String> sentences, tokenizedSentences;
         List<Questions> questionsList = new ArrayList<>();
 
         sentences = tokenizeDataSet.readTxtFile(path);
-        tokenizedSentences = tokenizeDataSet.tokenize(sentences);
+        System.out.println("dataset: " + sentences.get(0));
+        //tokenizedSentences = tokenizeDataSet.tokenize(sentences);
 
-        jFastTexts.jfasttextPizza(tokenizedSentences.get(0));
+        /*jFastTexts.jfasttextPizza(tokenizedSentences.get(0));
 
         //데이터 저장
-        /*for (String sentence: sentences) {
+        for (String sentence: sentences) {
             questions = Questions.builder()
                                 .intent("")
                                 .questions(sentence)

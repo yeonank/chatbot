@@ -15,7 +15,7 @@ public class TokenizeDataSet {
         String result = "";
 
         Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
-        komoran.setUserDic("C:/Project/komoran2/Test2/src/dic.user");
+        komoran.setUserDic("user_data/dic.user");
         KomoranResult analyzeResultList;
 
         for (String sentence: sentences){

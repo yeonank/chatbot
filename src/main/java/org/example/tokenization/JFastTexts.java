@@ -9,24 +9,28 @@ import org.springframework.stereotype.Component;
 public class JFastTexts {
     public final TokenizeDataSet tokenizeDataSet;
 
-    public void jfasttextPizza(String question){
-        JFastText jft = new JFastText();
-        ///////////////////Word embedding learning
-        jft.runCmd(new String[] {//항상 텍스트 형태로 줘야만 하나?
-                "skipgram",
-                "-input", "C:/Project/komoran2/Test2/src/unlabeled_pizzabot_data.txt",//todo 입력 데이터
-                "-output", "C:/Project/komoran2/Test2/src/test/resources/models/skipgramP.model",
-                "-bucket", "100",
-                "-minCount", "1"
-        });
-        //////////////////////Text classification
+    public void supervised(){
         System.out.println("text classification");
+        //////////////////////Text classification
+        JFastText jft = new JFastText();
         jft.runCmd(new String[] {
                 "supervised",
-                "-input", "C:/Project/komoran2/Test2/src/labeled_pizzabot_data.txt",
+                "-input", "C:/Project/komoran2/Test2/src/test/resources/data/labeled_pizzabot_data.txt",
                 "-output", "src/test/resources/models/supervisedP.model"
         });
 
+        ///////////////////Word embedding learning
+       /* jft.runCmd(new String[] {//항상 텍스트 형태로 줘야만 하나?
+                "skipgram",
+                "-input", "C:/Project/komoran2/Test2/src/unlabeled_pizzabot_data.txt",
+                "-output", "C:/Project/komoran2/Test2/src/test/resources/models/skipgramP.model",
+                "-bucket", "100",
+                "-minCount", "1"
+        });*/
+    }
+
+    public void jfasttextPizza(String question){
+        JFastText jft = new JFastText();
 // Load model from file
         jft.loadModel("src/test/resources/models/supervisedP.model.bin");
 
