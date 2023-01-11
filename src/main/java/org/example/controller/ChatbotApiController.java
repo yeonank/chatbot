@@ -1,16 +1,20 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.constants.SuccessCode.*;
 import org.example.dto.*;
+import org.example.dto.req.order.ChatbotOrderMenuListRequestDto;
+import org.example.dto.res.order.ChatbotOrderMenuListResponse;
 import org.example.dto.res.order.ChatbotOrderMenuListResponseDto;
 import org.example.service.ChatbotApiService;
 import org.example.service.OrderMenuService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.example.constants.SuccessCode.LOAD_MENU_LIST_SUCCES;
 
 @RequiredArgsConstructor
 @RestController//@ResponseBody를 붙이면 json type으로 response를 보냄
@@ -64,9 +68,12 @@ public class ChatbotApiController {
         return dto;
     }
 
-    @PostMapping("/api/chatbot/answer/4")//메뉴를 고르세요
-    public ChatbotOrderMenuListResponseDto test(@RequestBody ButtonAnswerRequestDto answer){
-        orderMenuService.menuList(answer.getAnswer());
-        return dto;
+    @GetMapping("/api/chatbot/answer/4")//메뉴를 고르세요
+    public ResponseEntity<ChatbotOrderMenuListResponse> test(@RequestParam(value = "yesno") int yesno){
+        ChatbotOrderMenuListRequestDto requestDto = ChatbotOrderMenuListRequestDto.of(yesno);
+        //받아온 데이터가 많아온 경우 dto로 묶어서 전달하기 위해
+
+        ChatbotOrderMenuListResponseDto responseDto= orderMenuService.menuList(requestDto);
+        return ChatbotOrderMenuListResponse.newResponse(LOAD_MENU_LIST_SUCCES, responseDto);
     }
 }
