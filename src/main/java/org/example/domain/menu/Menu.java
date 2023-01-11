@@ -1,5 +1,6 @@
 package org.example.domain.menu;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,4 +18,9 @@ public class Menu {
 
     @Column
     private int price;
+
+    @Builder
+    public Menu(String menu_name){
+        this.menu_name = menu_name;
+    }
 }

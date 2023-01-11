@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class ChatbotApiRequestDto {
-    private String typedMessage;
-        //private int yesno;
+public class CountRequestDto {
+    private Long id;
+    private int count;
 }

@@ -31,10 +31,14 @@ public class Orders {
     private Menu menu;
 
     @Builder
-    public Orders(int count, Boolean delivery, String address/*, String menu_intent*/){
+    public Orders(int count, Boolean delivery, String address, Menu menu){
         this.count = count;
         this.delivery = delivery;
         this.address = address;
-        //this.menu_intent = menu_intent;
+        this.menu = menu;
+    }
+
+    public void updateMenu(Menu menu) {
+        this.menu = menu;
     }
 }
