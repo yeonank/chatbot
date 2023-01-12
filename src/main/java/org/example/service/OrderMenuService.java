@@ -2,13 +2,10 @@ package org.example.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.domain.menu.MenuRepository;
-import org.example.dto.req.order.ChatbotOrderMenuListRequestDto;
-import org.example.dto.res.order.ChatbotOrderMenuListResponse;
-import org.example.dto.res.order.ChatbotOrderMenuListResponseDto;
+import org.example.dto.req.order.MenuListRequestDto;
+import org.example.dto.res.order.MenuListResponseDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -17,14 +14,14 @@ public class OrderMenuService {
     private final MenuRepository menuRepository;
     //private final ChatbotOrderMenuListResponseDto chatbotOrderMenuListResponseDto;
 
-    public ChatbotOrderMenuListResponseDto menuList(ChatbotOrderMenuListRequestDto request){
+    public MenuListResponseDto menuList(MenuListRequestDto request){
         //List<ment> menus;
         if(request.getUserTypedMessage() == 1){//yes
-            return ChatbotOrderMenuListResponseDto.of(menuRepository.findAll());
+            return MenuListResponseDto.of(menuRepository.findAll(), "1~10까지 메뉴를 골라주세요.");
         }else if(request.getUserTypedMessage() == 2){
-            return ChatbotOrderMenuListResponseDto.of(null);
+            return MenuListResponseDto.of(null,"필요하시면 다시 불러주세요.");
         }else {
-            return ChatbotOrderMenuListResponseDto.of(null);
+            return MenuListResponseDto.of(null, "주문을 종료합니다.");
         }
     }
 }

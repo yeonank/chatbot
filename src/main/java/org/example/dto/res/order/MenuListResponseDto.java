@@ -1,24 +1,24 @@
 package org.example.dto.res.order;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.domain.menu.Menu;
-import org.example.dto.req.order.ChatbotOrderMenuListRequestDto;
 
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class ChatbotOrderMenuListResponseDto {
+public class MenuListResponseDto {
     private List<Menu> menuList;
+    private String answer;
 
-    private ChatbotOrderMenuListResponseDto(List<Menu> menuList){
+    private MenuListResponseDto(List<Menu> menuList, String answer){
         this.menuList = menuList;
+        this.answer = answer;
     }
 
-    public static ChatbotOrderMenuListResponseDto of(List<Menu> menuList){
-        return new ChatbotOrderMenuListResponseDto(menuList);
+    public static MenuListResponseDto of(List<Menu> menuList, String answer){
+        return new MenuListResponseDto(menuList, answer);
     }
 
     /*@Getter
