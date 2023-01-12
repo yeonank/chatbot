@@ -9,7 +9,7 @@ import static org.springframework.http.HttpStatus.OK;
 @AllArgsConstructor
 public enum SuccessCode {//todo enum 찾아보기
     //todo http status
-    LOAD_MENU_LIST_SUCCES(OK, "게시글 카테고리 조회에 성공했습니다.");
+    LOAD_MENU_LIST_SUCCES(OK, "메뉴 리스트를 가져오는데 성공했습니다.");
     private final HttpStatus status;
     private final String msg;
 }
